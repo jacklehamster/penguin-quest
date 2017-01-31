@@ -1,0 +1,71 @@
+<html>
+<script>
+     function playMusic(mp3, count, onEnd, endTime) {
+        var audio = new Audio(mp3);
+        audio.volume = 1;
+        audio.play();
+        if(endTime) {
+            audio.addEventListener('timeupdate', function() {
+                if(!audios[mp3]) {
+                    return;
+                }
+                if(audio.currentTime<endTime) {
+                    return;
+                }
+                if(count>0) {
+                    count--;
+                    if(!count) {
+                        stopMusic(mp3);
+                        if(onEnd) {
+                            onEnd();
+                        }
+                        return;
+                    }
+                }
+                this.currentTime = 0;
+                this.play();
+            }, false);
+        } else {
+            audio.addEventListener('ended', function() {
+                if(count>0) {
+                    count--;
+                    if(!count) {
+                        stopMusic(mp3);
+                        if(onEnd) {
+                            onEnd();
+                        }
+                        return;
+                    }
+                }
+                this.currentTime = 0;
+                this.play();
+            }, false);
+        }
+        audios[mp3] = audio;
+     }
+
+     function isPlaying(mp3) {
+        return audios[mp3];
+     }
+     
+     function stopMusic(mp3) {
+        if(isPlaying(mp3)) {
+            audios[mp3].pause();
+            delete audios[mp3];
+        }
+     }
+     
+    playMusic("music/main.ogg",100000);    
+</script>
+<style>
+    html { 
+  background: url(youwin.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+<body>
+</body>
+</html>
