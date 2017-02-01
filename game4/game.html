@@ -131,20 +131,20 @@
             margin-bottom: 5px;
         }
     </style>
-    <script src="../lib/threejs/three.js"></script>
-    <script src="../lib/dobuki/setup.js"></script>
-    <script src="../lib/dobuki/utils.js"></script>
-    <script src="../lib/dobuki/packer.js"></script>
-    <script src="../lib/dobuki/spritesheet.js"></script>
-    <script src="../lib/dobuki/loop.js"></script>
-    <script src="../lib/dobuki/spriterenderer.js"></script>
-    <script src="../lib/dobuki/collection.js"></script>
-    <script src="../lib/dobuki/keyboard.js"></script>
+    <script src="lib/threejs/three.js"></script>
+    <script src="lib/dobuki/setup.js"></script>
+    <script src="lib/dobuki/utils.js"></script>
+    <script src="lib/dobuki/packer.js"></script>
+    <script src="lib/dobuki/spritesheet.js"></script>
+    <script src="lib/dobuki/loop.js"></script>
+    <script src="lib/dobuki/spriterenderer.js"></script>
+    <script src="lib/dobuki/collection.js"></script>
+    <script src="lib/dobuki/keyboard.js"></script>
     <script src="editor/editor.js"></script>
     
 </head>
 <body>
-    <span id="fps" style="position:absolute; color:silver; top:0px; left:0px">FPS</span>
+    <span id="fps" style="display:none;position:absolute; color:silver; top:0px; left:0px">FPS</span>
 
 
 </body>
@@ -2151,7 +2151,7 @@
             DOK.displaySprites(spritesToDisplay);
             renderer.render(scene, camera);
             refreshText(dialog);
-            document.getElementById("fps").textContent = DOK.fps;
+//            document.getElementById("fps").textContent = DOK.fps;
         });
     }
     
